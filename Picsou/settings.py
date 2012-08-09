@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'south',
     'cour',
-    'gear',
+    'filament',
     'tweet',
     'valeur',
 )
