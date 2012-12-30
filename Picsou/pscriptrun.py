@@ -2,21 +2,6 @@ import urllib
 import simplejson
 import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
-# # settings.py
-# from django.conf import settings
-
-# settings.configure(
-
-# DATABASE_ENGINE    = "django.db.backends.sqlite3",
-# DATABASE_NAME      = "picsou.db",
-# DATABASE_USER      = "",
-# DATABASE_PASSWORD  = "",
-# DATABASE_HOST      = "",
-# DATABASE_PORT      = "",
-# INSTALLED_APPS     = ("tweet","valeur")
-# )
-# from django.core.management import setup_environ
-# setup_environ(settings)
 from django.db import models
 from tweet.models import Tweet
 from valeur.models import Valeur
@@ -30,9 +15,22 @@ def searchTweets(query):
  #  print "*",result["text"].encode('utf-8'),"\n"
 
 def traitementvaleur(valeur):
-	pass
+	result = {}
+	result['Nom'] = searchTweets(valeur.Nom)
+	result['NomAction']  = searchTweets(valeur.NomAction)
+	result['Hashtag'] = []
+	for h in valeur.Hashtag :
+		result['Hashtag'].append(searchTweets("#%s"%h))
+
+
+
+def saveresult(result):
+	tnom = Tweet(Auteur=result['from_user_name'].encode('utf-8'), Contenu='')
 
 valeurs =   Valeur.objects.all()
-print valeurs
+for valeur in valeurs :
+	traitementvaleur(valeur)
+
+
 # we will search tweets about "fc liverpool" football team
-results = searchTweets("#apple")
+results = 
