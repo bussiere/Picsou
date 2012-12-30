@@ -1,8 +1,11 @@
 from pybrain.tools.shortcuts import buildNetwork
+from pybrain.supervised.trainers import BackpropTrainer
+from pybrain.structure import TanhLayer
+from pybrain.datasets import SupervisedDataSet
+
 net = buildNetwork(2, 3, 1)
 net.activate([2, 1])
 
-from pybrain.datasets import SupervisedDataSet
 ds = SupervisedDataSet(2, 1)
 
 ds.addSample((0, 0), (0,))
@@ -17,7 +20,7 @@ for inpt, target in ds :
 
 print ds['input']
 
-from pybrain.supervised.trainers import BackpropTrainer
+
 net = buildNetwork(2, 3, 1, bias=True, hiddenclass=TanhLayer)
 trainer = BackpropTrainer(net, ds)
 
