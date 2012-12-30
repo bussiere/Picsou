@@ -11,6 +11,6 @@ def searchTweets(query):
  	print "*",result["text"].encode('utf-8'),"\n"
 
 
-searchTweets("apple%20stockvalue")
+searchTweets("#apple")
 
 
