@@ -11,7 +11,7 @@ import tweepy
 from django.utils.http import urlquote_plus
 
 def searchTweets(query):
-	auth = tweepy.BasicAuthHandler('bussiere','@Rpg.Jdr09@42')
+	auth = tweepy.BasicAuthHandler('Bot2bud','')
 	api = tweepy.API(auth)
  	result = api.search(query)
  	print result
