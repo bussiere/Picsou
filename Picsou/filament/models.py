@@ -15,6 +15,11 @@ Avis = (
     (0, 'Neutre'),
     (1, 'Positif'),
 )
+
+class Outil(models.Model):
+    Outil = models.TextField(max_length=50, null=True, blank=True)
+
+
 class AnalyseTweet(models.Model):
     Tweet = models.ForeignKey('tweet.Tweet')
     AnalyseBot = models.IntegerField(choices=Avis,blank=True,null=True)
@@ -22,6 +27,7 @@ class AnalyseTweet(models.Model):
     Final = models.IntegerField(choices=Avis,blank=True,null=True)
     Date = models.DateTimeField()
     Valeur = models.ForeignKey('valeur.Valeur')
+    Outil = models.ManyToManyField('Outil')
 
 class OldAnalyseTweet(models.Model): 
     Tweet = models.ForeignKey('tweet.Tweet')
@@ -39,6 +45,7 @@ class Prediction(models.Model):
     DateFait = models.DateTimeField()
     DatePrevu = models.DateTimeField()
     Pertinent = models.IntegerField(choices=Pertinence,blank=True,null=True)
+    Outil = models.ManyToManyField('Outil')
 
 class OldPrediction(models.Model):
     Valeur = models.ForeignKey('valeur.Valeur')
