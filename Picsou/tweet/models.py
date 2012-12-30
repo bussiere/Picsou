@@ -6,6 +6,7 @@ class Auteur(models.Model):
     Nom = models.TextField(max_length=50, null=True, blank=True)
     Note = models.TextField(max_length=1024, null=True, blank=True)
     Amis = models.ManyToManyField('Auteur',null=True, blank=True)
+    Puissance =  models.FloatField()
     def __unicode__(self):
         return str(self.Nom)
     
@@ -19,6 +20,7 @@ class Tweet(models.Model):
     Contenu = models.TextField(max_length=200, null=True, blank=True)
     Analyse = models.BooleanField(default=False)
     HasTag = models.ManyToManyField('HashTag')
+    Salt = models.TextField(max_length=200, null=True, blank=True)
     def __unicode__(self):
         return str(self.Auteur + " "+ self.Contenu)
 
@@ -27,5 +29,6 @@ class OldTweet(models.Model):
     Contenu = models.TextField(max_length=200, null=True, blank=True)
     Analyse = models.BooleanField(default=False)
     HasTag = models.ManyToManyField('HashTag')
+    Salt = models.TextField(max_length=200, null=True, blank=True)
     def __unicode__(self):
         return str(self.Auteur + " "+ self.Contenu)
