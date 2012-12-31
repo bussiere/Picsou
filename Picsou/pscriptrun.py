@@ -59,7 +59,7 @@ def saveresult(result,key):
 	tnom.save()
 	for h in hashtags :
 		try :
-			h1 = HashTag.objects.get(HashTag=h)
+			h1 = HashTag.objects.get(HashTag='#%s'%h)
 		except :
 			h1 = HashTag(HashTag='#%s'%h)
 			h1.save()

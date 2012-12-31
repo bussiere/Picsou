@@ -28,6 +28,7 @@ class AnalyseTweet(models.Model):
     Date = models.DateTimeField()
     Valeur = models.ForeignKey('valeur.Valeur')
     Outil = models.ManyToManyField('Outil')
+    Puissance =  models.FloatField()
 
 class OldAnalyseTweet(models.Model): 
     Tweet = models.ForeignKey('tweet.Tweet')
