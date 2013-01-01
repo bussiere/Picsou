@@ -9,7 +9,7 @@ from tweet.models import Auteur
 from tweet.models import HashTag
 import tweepy
 from django.utils.http import urlquote_plus
-
+import time 
 def searchTweets(query):
 	auth = tweepy.BasicAuthHandler('Bot2bud','')
 	api = tweepy.API(auth)
@@ -66,10 +66,11 @@ def saveresult(result,key):
 		tnom.HashTag.add(h1)
 	tnom.save()
 
-
-valeurs =   Valeur.objects.all()
-for valeur in valeurs :
-	traitementvaleur(valeur)
+while 1 :
+	valeurs =   Valeur.objects.all()
+	for valeur in valeurs :
+		traitementvaleur(valeur)
+		time.sleep(30)
 
 
 # we will search tweets about "fc liverpool" football team
