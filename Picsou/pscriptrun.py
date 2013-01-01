@@ -31,22 +31,31 @@ def searchTweets(query):
 
 def traitementvaleur(valeur):
 	result = {}
-	result['Nom'] = searchTweets(valeur.Nom)
-	result['NomAction']  = searchTweets(valeur.NomAction)
-	count = 0
-	for h in valeur.Hashtag.all() :
-		result['Hashtag_%d'%count] = []
-		result['Hashtag_%d'%count] = searchTweets("%s"%h.HashTag)
-		count += 1
-	for key in result.keys() :
-		for r in result[key] :
-			saveresult(r,key)
+	succeed = False
+	while (not succeed ) :
+		try :
+			result['Nom'] = searchTweets(valeur.Nom)
+			result['NomAction']  = searchTweets(valeur.NomAction)
+			count = 0
+			for h in valeur.Hashtag.all() :
+				result['Hashtag_%d_%s'%(count,h.HashTag)] = []
+				result['Hashtag_%d_%s'%(count,h.HashTag)] = searchTweets("%s"%h.HashTag)
+				count += 1
+			for key in result.keys() :
+				for r in result[key] :
+					saveresult(r,key,valeur)
+			succeed = True
+		except :
+			print "twitter hs"
+			time.sleep(30)
+
+
 
 def extract_hash_tags(s):
 	return set(part[1:] for part in s.split() if part.startswith('#'))
 
 
-def saveresult(result,key):
+def saveresult(result,key,valeur):
 	try :
 		auteur = Auteur.objects.get(Nom=result['from_user_name'])
 	except :
@@ -55,7 +64,7 @@ def saveresult(result,key):
 	hashtags = extract_hash_tags(result["text"])
 	
 
-	tnom = Tweet(Auteur=auteur, Contenu=result["text"],Recherche=key)
+	tnom = Tweet(Auteur=auteur, Contenu=result["text"],TypeRecherche=key,Valeur=valeur)
 	tnom.save()
 	for h in hashtags :
 		try :
