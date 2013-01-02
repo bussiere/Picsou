@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Picsou</name>
+	<name>amadrhasP</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -10,9 +10,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.python.pydev.pythonNature</nature>
-		<nature>org.python.pydev.django.djangoNature</nature>
 	</natures>
 </projectDescription>
