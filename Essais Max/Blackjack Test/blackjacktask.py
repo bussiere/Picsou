@@ -13,3 +13,7 @@ class BlackjackTask(Task) :
 
 	def getObservation(self) :
 		sensors = self.env.getSensors()
+		return sensors
+
+	def getReward(self) : 
+		reward = raw_input("Enter reward: ")
