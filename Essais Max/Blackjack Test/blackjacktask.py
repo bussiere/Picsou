@@ -17,3 +17,17 @@ class BlackjackTask(Task) :
 
 	def getReward(self) : 
 		reward = raw_input("Enter reward: ")
+		cur_reward = self.lastreward
+		self.lastreward = reward
+
+		return cur_reward
+
+	@property 
+	def indim(self) : 
+		return self.env.indim
+
+	@property 
+	def outdim(self) : 
+		return self.env.outdim
+
+	
