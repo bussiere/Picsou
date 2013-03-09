@@ -1,5 +1,5 @@
-from pybrain.rl.environments.blackjacktask import BlackjackTask
-from pybrain.rl.environments.blackjackenv import BlackjackEnv
+from blackjacktask import BlackjackTask
+from blackjackenv import BlackjackEnv
 from pybrain.rl.learners.valuebased import ActionValueTable
 from pybrain.rl.agents import LearningAgent
 from pybrain.rl.learners import Q
